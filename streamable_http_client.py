@@ -63,7 +63,7 @@ class MCPClient:
 
         # Initial OpenAI API call with full conversation history
         response = self.openai.chat.completions.create(
-            model="gpt-4o-mini-2024-07-18",
+            model="gpt-4.1-mini-2025-04-14",
             max_tokens=1000,
             messages=self.messages,
             tools=available_tools
