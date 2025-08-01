@@ -5,6 +5,7 @@ It is useful for simple testing of MCP servers.
 To run the client, use the following command:
 ```
 python streamable_http_client.py <url> <args>
+python streamable_http_client.py http://localhost:5000/mcp
 ```
 """
 
@@ -62,7 +63,7 @@ class MCPClient:
 
         # Initial OpenAI API call with full conversation history
         response = self.openai.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-4o-mini",
             max_tokens=1000,
             messages=self.messages,
             tools=available_tools
