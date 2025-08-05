@@ -109,7 +109,7 @@ class MCPClient:
 
                 # Get next response from OpenAI with full history
                 response = self.openai.chat.completions.create(
-                    model="gpt-4o",
+                    model="gpt-4.1-mini-2025-04-14",
                     max_tokens=1000,
                     messages=self.messages,
                 )
