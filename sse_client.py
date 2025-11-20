@@ -4,9 +4,9 @@ It is useful for simple testing of MCP servers.
 
 To run the client, use the following command:
 ```
-python streamable_http_client.py <url> <args>
-python streamable_http_client.py http://localhost:5000/mcp
-python streamable_http_client.py https://gcalendar-mcp-server.klavis.ai/mcp/?instance_id=9d9a4b34-d0c5-4b8e-b633-1aa101f57de6
+python sse_client.py <url> <args>
+python sse_client.py http://localhost:5000/sse
+python sse_client.py https://gcalendar-mcp-server.klavis.ai/mcp/?instance_id=9d9a4b34-d0c5-4b8e-b633-1aa101f57de6
 ```
 """
 
@@ -21,7 +21,7 @@ import anyio
 import sys
 from dotenv import load_dotenv
 from mcp.client.session import ClientSession
-from mcp.client.streamable_http import streamablehttp_client
+from mcp.client.sse import sse_client
 
 from openai import OpenAI
 
@@ -169,7 +169,7 @@ async def run_session(read_stream, write_stream):
 # example streamable http url: http://localhost:8000/mcp as per the MCP spec
 async def main(url: str, args: list[str]):
     # Use streamable HTTP client
-    async with streamablehttp_client(url) as streams:
+    async with sse_client(url) as streams:
         await run_session(*streams[:2])  # Only pass read_stream and write_stream
 
 
